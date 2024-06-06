@@ -18,10 +18,18 @@ public class test1 {
 		
 //		3.boolean型の変数の値に不正な文字列比較を入れてfalseを出力してください。
 		
-		 boolean nam = false;
+		  boolean isOverTeenage = false;
+		  int yourAge = 18;
+		  
+		  isOverTeenage = (yourAge >= 20);
+		  
+		  if (isOverTeenage) {
+			  System.out.println(isOverTeenage);
+	        } else {
+	            System.out.println(isOverTeenage);
+	        }
+		  }
 		 
-		 System.out.print(nam);
-		
 		
 	}
-}
+
