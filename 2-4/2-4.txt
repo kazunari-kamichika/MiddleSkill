@@ -1,0 +1,80 @@
+﻿⚫️課題2−4
+
+
+エビデンス写真を格納してからプッシュしてください。
+例）エビデンス問①
+
+
+※誤ったSQL文を実行した場合元に戻すのが面倒なため問題を回答する前にCSV形式でデータのバックアップを取得しておくこと
+実行SQL文と実行結果スクショを提出すること。
+
+
+
+
+●ER図（ネットショッピング情報）
+  
+
+
+
+①顧客テーブルからすべての顧客の情報を取得するSQL文
+「 SELECT * FROM customers  」
+  
+
+②顧客テーブルから特定の顧客の名前(山田太郎)とメールアドレス(yamada@example.com)を取得するSQL文
+「
+SELECT name,email FROM customers
+WHERE name='山田太郎',email='yamada@example.com' 
+ 」
+
+
+  
+
+③注文テーブルから注文日が2022年2月1日以降の注文情報を取得するSQL文
+「  
+SELECT * FROM orders
+WHERE order_date >='2022/2/1'
+」
+  
+
+
+
+④注文アイテムテーブルから、エアコン を購入した注文数を取得し注文された合計金額を取得するSQL文 ※LEFT JOINを利用すること
+「 
+SELECT SUM(order_items.price)  FROM order_items
+LEFT JOIN products ON order_items.product_id = products.product_id
+WHERE order_items.product_id ='4'
+ 」
+
+
+  
+
+
+
+⑤製品テーブルから、ある価格帯(5万円以上〜10万円以内)の製品を全て取得するSQL文
+※BETWEENを利用すること
+「 
+SELECT * FROM products
+WHERE price BETWEEN 50000 AND 100000;
+ 」
+  
+
+
+
+⑥製品テーブルから、カテゴリごとに製品数と平均価格を取得するSQL文
+「 
+SELECT cotegory, AVG(price),COUNT(cotegory) FROM products
+GROUP BY cotegory;
+ 」
+  
+
+
+
+
+
+⑦注文情報テーブルから、各顧客が最も最近に注文した日付を取得するSQL文
+「 
+SELECT customers.name, customers.customer_id , MAX(orders.order_date)newday FROM customers	
+INNER JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY customers.customer_id 
+ORDER BY customers.customer_id DESC
+ 」
