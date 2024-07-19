@@ -78,46 +78,38 @@ public class test1 {
 
 		//改行
 		System.out.println("問７");
-		
+
 		//問題7:Map"car"に「キー："honda"　バリュー"ホンダ",キー："toyota"　バリュー："トヨタ",キー："subaru"　バリュー："スバル"」の要素を追加してください
 
-		
-		Map<String,String> car = new HashMap <String,String>();
-		
-		car.put("honda","ホンダ");
-		car.put("toyota","トヨタ");
-		car.put("subaru","スバル");
-		
-		
+		Map<String, String> car = new HashMap<String, String>();
+
+		car.put("honda", "ホンダ");
+		car.put("toyota", "トヨタ");
+		car.put("subaru", "スバル");
+
 		//改行
 		System.out.println("問８");
 
 		//問題8:Map"car"の「キー："toyota"」のバリューを出力してください。
-		
-		 System.out.println(car.get("toyota"));
+
+		System.out.println(car.get("toyota"));
 
 		//改行
 		System.out.println("問９");
 
 		//問題9:Map"car"のキーとバリューを全て出力してください。※for文で行うこと
-		
+
 		for (String key : car.keySet()) {
 			System.out.println(key);
 		}
-		
+
 		//改行
 		System.out.println("問１０");
 
 		//問題10:Map"car"のキーとバリューを全て出力してください。※forEach文で行うこと
-		
-
-		car.forEach((k, v) -> {
-		    System.out.println(k);
-		    System.out.println(v);
-		});
 
 		car.forEach((key, value) -> System.out.println(key + " : " + value));
 
 	}
-	
+
 }
