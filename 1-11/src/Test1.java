@@ -45,11 +45,11 @@ public class Test1 {
 		int nume = 4;
 		int numf = -3;
 		String results = "";
-		
-		results = (nume>0)?(numf>0)? "both positive": "one positive": "both negative";
-		
+
+		results = (nume > 0) ? (numf > 0) ? "both positive" : "one positive" : "both negative";
+
 		System.out.println(results);
-		
+
 	}
 
 }
