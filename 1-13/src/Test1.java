@@ -26,6 +26,10 @@ public class Test1 {
 		
 		for(int i = 2; i < strArray1.size(); i++) {
 			
+			
+			
+			
+			
 	}
 
 	}
