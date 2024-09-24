@@ -1,0 +1,49 @@
+問①
+UPDATE customers
+SET 
+phone ='999-9999-9999'
+WHERE 
+customer_id=1
+
+-------------------------
+問②
+UPDATE order_items
+SET 
+quantity ='3',
+price = '150000'
+WHERE order_id ='2' AND product_id ='4'
+
+
+----------------------
+問③
+UPDATE customers
+SET name = (
+  SELECT p.name
+  FROM order_items oi
+  LEFT JOIN orders o ON oi.order_id = o.order_id
+  LEFT JOIN products p ON oi.product_id = p.product_id
+  WHERE o.customer_id = customers.customer_id
+  AND o.customer_id = 3
+  LIMIT 1 -- 複数の商品がある場合、最初の商品名を選択
+)
+WHERE customer_id = 3;
+
+
+-----------------------
+問④
+
+UPDATE orders
+SET customer_id = 
+  CASE 
+    WHEN order_date BETWEEN '2022-01-01' AND '2022-02-28' THEN 2
+    WHEN order_date BETWEEN '2022-03-01' AND '2022-03-28' THEN 1
+    ELSE 3
+  END;
+  
+  
+---------------------
+問⑤
+
+UPDATE customers
+SET name = '福田三郎'
+WHERE name LIKE '%コ%';
