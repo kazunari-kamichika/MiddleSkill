@@ -14,22 +14,22 @@ public class Test1 {
 		int y = 80;
 		int z = 15;
 
-		 // 1つ目のif文: x, y, zが正の整数かどうかを確認
-        if (x > 0 && y > 0 && z > 0) {
-            // 2つ目のif文: xが10の倍数かどうかを確認
-            if (x % 10 == 0) {
-                // 3つ目のif文: x + y + zが100かどうかを確認
-                if (x + y + z == 100) {
-                    System.out.println("プラス100：OK");
-                } else {
-                    System.out.println("プラス100：NG");
-                }
-            } else {
-                System.out.println("10の倍数：NG");
-            }
-        } else {
-            System.out.println("正の整数：NG");
-        }
+		// 1つ目のif文: x, y, zが正の整数かどうかを確認
+		if (x > 0 && y > 0 && z > 0) {
+			// 2つ目のif文: xが10の倍数かどうかを確認
+			if (x % 10 == 0) {
+				// 3つ目のif文: x + y + zが100かどうかを確認
+				if (x + y + z == 100) {
+					System.out.println("プラス100：OK");
+				} else {
+					System.out.println("プラス100：NG");
+				}
+			} else {
+				System.out.println("10の倍数：NG");
+			}
+		} else {
+			System.out.println("正の整数：NG");
+		}
 
 		//改行
 		System.out.println("問２");
