@@ -1,0 +1,23 @@
+﻿⚫️課題3-5
+
+
+①リポジトリーとは何ですか？
+
+リポジトリーは、データアクセスを抽象化し、オブジェクトの集合へ格納、取得、検索するかのような振る舞いを提供します。
+
+
+②次の中でリポジトに当てはまるものはどれになりますか？(controller、service、view、seviceimpl、entity、dao、daoimpl)
+
+「dao」
+
+
+③次の中でリポジトリで取得した値を格納するものはどれですか？(controller、service、view、seviceimpl、entity、dao、daoimpl)
+
+「entity」
+
+
+④AOPとは何ですか？
+
+「AOP」とは、Aspect Oriented Programmingの略称でアスペクト指向プログラミングのことです。
+具体的には、あらゆるオブジェクトに散在する共通処理を抜き出し、それを一つにまとめて管理できるようにする手法及び概念のことです。
+
