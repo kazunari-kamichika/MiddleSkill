@@ -1,0 +1,50 @@
+﻿⚫️課題3-11
+
+
+①application.propertiesとは何ですか？
+
+application.propertiesとはSpring Bootで用意されている
+デフォルトの設定ではなく環境独自の設定を行うためのファイルです。
+
+
+②logging.file.pathとはどんなプロパティですか？
+
+ログファイルの場所を設定するプロパティ。
+
+
+③spring.messages.encodingとはどんなプロパティですか？
+
+メッセージバンドルのエンコードを設定するプロパティ。
+
+
+④エンコードとは何ですか？
+
+エンコード（encode）とは、信号やデータを一定の規則に従って変換すること。
+Shift-JIS
+UTF-8:
+EUC-JP
+Unicode
+ASCIIなどがある。
+
+
+⑤spring.datasource.urlとはどんなプロパティですか？
+
+Spring Bootのアプリケーションでデータベース接続を設定するためのプロパティ。
+
+
+⑥spring.transaction.rollback-on-commit-failureとはどんなプロパティですか？
+
+コミットの失敗時にロールバックするかどうか設定するプロパティ。
+
+
+⑦spring.jta.atomikos.connectionfactory.max-pool-sizeとはどんなプロパティですか？
+
+Oracle UCP の PoolDataSource のインスタンスにバインドされた Oracle UCP 固有の設定で、その中でも、接続プールの上限値を設定するプロパティ。
+
+
+⑧コネクションプーリングとは何ですか？
+
+コネクションプーリングとは、データベースにコネクション（接続）する場合に、要求されるたびにコネクションを作成するのではなく、コネクションをプール（保持）して再利用するという機能。
+
+コネクションプーリング（connection pooling）とは、プログラムがデータベース管理システム（DBMS）へアクセスする際、アクセス要求のたびに接続や切断を繰り返すのではなく、一度形成した接続窓口（コネクション）を維持し続けて使い回す手法。
+
