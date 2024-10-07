@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.MemberEntity;
 import com.example.demo.form.MemberForm;
+import com.example.demo.service.BloodTypeService;
 import com.example.demo.service.GenderService;
 import com.example.demo.service.MemberService;
 
@@ -38,6 +39,12 @@ public class MemberController {
 	     */
 	    @Autowired
 	    GenderService genderService; 
+	    
+	    /**
+	     * 血液型情報 Service
+	     */
+	    @Autowired
+	    BloodTypeService bloodTypeService;
 	
 	
 	  /**
@@ -61,6 +68,7 @@ public class MemberController {
 	 public String memberRegister(Model model) {
 	   model.addAttribute("memberRequest", new MemberForm());
 	   model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを追加
+	   model.addAttribute("bloodTypes", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
 	   return "member/add";
 	 }
 
@@ -124,6 +132,7 @@ public class MemberController {
 	    memberUpdateRequest.setBlood_type_id(member.getBlood_type_id());
 	    model.addAttribute("memberUpdateRequest", memberUpdateRequest);
 	    model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを追加
+	    model.addAttribute("bloodTypes", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
 	    return "member/edit";
 	  }
 	  
