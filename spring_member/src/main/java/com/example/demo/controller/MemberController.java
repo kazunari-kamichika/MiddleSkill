@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +56,13 @@ public class MemberController {
 	  @RequestMapping("/member/list")
 	 public String memberList(Model model) {
 	    List<MemberEntity> memberlist = memberService.searchAll();
+	    
+	    Map<Integer, String> genderMap = genderService.getGenders();
+        Map<Integer, String> bloodTypeMap = bloodTypeService.getBloodTypes();
+	    
 	    model.addAttribute("memberlist", memberlist);
+	    model.addAttribute("genderMap", genderMap); // 性別Mapをモデルに追加
+        model.addAttribute("bloodTypeMap", bloodTypeMap); // 血液型Mapをモデルに追加
 	   return "member/list";
 	 }
 	 
@@ -67,8 +74,8 @@ public class MemberController {
 	  @RequestMapping("/member/add")
 	 public String memberRegister(Model model) {
 	   model.addAttribute("memberRequest", new MemberForm());
-	   model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを追加
-	   model.addAttribute("bloodTypes", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
+	   model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを追加
+	   model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
 	   return "member/add";
 	 }
 
@@ -86,9 +93,11 @@ public class MemberController {
 	     for (ObjectError error : result.getAllErrors()) {
 	       errorList.add(error.getDefaultMessage());
 	     }
+	     
 	     model.addAttribute("memberRequest", new MemberForm());
 	     model.addAttribute("validationError", errorList);
-	     model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを再度追加
+	     model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを再度追加
+         model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型リストを再度追加
 	     return "member/add";
 	   }
 	   // メンバー情報の登録
@@ -131,8 +140,8 @@ public class MemberController {
 	    memberUpdateRequest.setGender_id(member.getGenderId());
 	    memberUpdateRequest.setBlood_type_id(member.getBlood_type_id());
 	    model.addAttribute("memberUpdateRequest", memberUpdateRequest);
-	    model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを追加
-	    model.addAttribute("bloodTypes", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
+	    model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを追加
+        model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型のデータを追加
 	    return "member/edit";
 	  }
 	  
@@ -150,7 +159,8 @@ public class MemberController {
 	               errorList.add(error.getDefaultMessage());
 	           }
 	           model.addAttribute("validationError", errorList);
-	           model.addAttribute("genderList", genderService.getAllGenders()); // 性別リストを再度追加
+	           model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを再度追加
+	            model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型リストを再度追加
 	           return "member/edit";
 	       }
 	       // メンバー情報の更新

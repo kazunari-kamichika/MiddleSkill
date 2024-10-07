@@ -19,13 +19,13 @@
        </tr>
      </thead>
      <tbody>
-       <tr th:each="member : ${memberlist}" th:object="${member}" class="align-middle">
-         <td th:text="*{id}"></td>
-         <td th:text="*{name}"></td>
-         <td th:text="*{age}"></td>
-         <td th:text="*{genderId}"></td>
-         <td th:text="*{blood_type_id}"></td>
-         <td><a th:href="@{/member/{id}(id=*{id})}" class="btn btn-secondary">詳細</a></td>
+       <tr th:each="member : ${memberlist}" class="align-middle">
+         <td th:text="${member.id}"></td>
+         <td th:text="${member.name}"></td>
+         <td th:text="${member.age}"></td>
+         <td th:text="${genderMap[member.genderId]}"></td>
+         <td th:text="${bloodTypeMap[member.blood_type_id]}"></td>
+         <td><a th:href="@{/member/{id}(id=${member.id})}" class="btn btn-secondary">詳細</a></td>
        </tr>
      </tbody>
    </table>

@@ -1,27 +1,19 @@
 package com.example.demo.service;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.GenderEntity;
-import com.example.demo.repository.GenderRepository;
-
-/**
- * 性別 Service
- */
 @Service
 public class GenderService {
 
-    @Autowired
-    private GenderRepository genderRepository;
-
-    /**
-     * 全ての性別を取得
-     * @return 性別リスト
-     */
-    public List<GenderEntity> getAllGenders() {
-        return genderRepository.findAll();
+    // 性別情報を取得するメソッド
+    public Map<Integer, String> getGenders() {
+        Map<Integer, String> genderMap = new HashMap<>();
+        genderMap.put(1, "男性");
+        genderMap.put(2, "女性");
+        genderMap.put(3, "その他");
+        return genderMap;
     }
 }

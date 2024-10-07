@@ -10,28 +10,26 @@
 		</div>
 		<h1>メンバー情報編集</h1>
 
-
 		<form th:action="@{/member/update}" th:object="${memberUpdateRequest}" th:method="post">
 			<input type="hidden" th:field="*{id}" />
 			<div>
 				<div class="form-group">
 					<div class="col-2 pt-3 border bg-light">名前<span class="text-danger">※</span></div>
 					<div class="col py-2 border">
-						<input type="text" class="form-control" th:field="*{name}">
+						<input type="text" class="form-control" th:field="*{name}" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-2 pt-3 border bg-light">年齢<span class="text-danger">※</span></div>
 					<div class="col py-2 border">
-						<input type="text" class="form-control" th:field="*{age}">
+						<input type="text" class="form-control" th:field="*{age}" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="gender">性別：<span class="text-danger">※</span></label>
-					<select id="gender" th:field="*{gender_id}" class="form-control">
+					<select id="gender" th:field="*{gender_id}" class="form-control" required>
 						<option value="" disabled selected>選択してください</option>
-						<option th:each="gender : ${genderList}" th:value="${gender.id}" th:text="${gender.name}">
-						</option>
+						<option th:each="entry : ${genderMap}" th:value="${entry.key}" th:text="${entry.value}"></option>
 					</select>
 					<div class="text-danger" th:if="${validationError != null}">
 						<span th:each="error : ${validationError}" th:text="${error}"></span>
@@ -39,9 +37,9 @@
 				</div>
 				<div class="form-group">
 					<label>血液型：<span class="text-danger">※</span></label>
-					<select th:field="*{blood_type_id}" class="form-control">
+					<select th:field="*{blood_type_id}" class="form-control" required>
 						<option value="" disabled>血液型を選択してください</option>
-						<option th:each="entry : ${bloodTypes}" th:value="${entry.key}" th:text="${entry.value}"
+						<option th:each="entry : ${bloodTypeMap}" th:value="${entry.key}" th:text="${entry.value}"
 							th:selected="${entry.key == memberUpdateRequest.blood_type_id}"></option>
 					</select>
 				</div>
