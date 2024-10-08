@@ -20,7 +20,7 @@ public class MemberForm {
 	* 名前
 	*/
 	@NotEmpty(message = "名前を入力してください")
-	@Size(max = 50, message = "名前は100文字以内で入力してください")
+	@Size(max = 100, message = "名前は100文字以内で入力してください")
 	private String name;
 
 	/**

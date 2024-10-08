@@ -31,9 +31,6 @@
 						<option value="" disabled selected>選択してください</option>
 						<option th:each="entry : ${genderMap}" th:value="${entry.key}" th:text="${entry.value}"></option>
 					</select>
-					<div class="text-danger" th:if="${validationError != null}">
-						<span th:each="error : ${validationError}" th:text="${error}"></span>
-					</div>
 				</div>
 				<div class="form-group">
 					<label>血液型：<span class="text-danger">※</span></label>
