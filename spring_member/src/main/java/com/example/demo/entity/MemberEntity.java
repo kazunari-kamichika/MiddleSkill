@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,4 +39,17 @@ public class MemberEntity {
 
     @Column(name = "blood_type_id")
     private Integer blood_type_id;
+    
+    // 生年月日のフィールドを追加
+    @Column(name = "birthday")
+    private LocalDate birthday;
+
+    // getter と setter を追加
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
 }

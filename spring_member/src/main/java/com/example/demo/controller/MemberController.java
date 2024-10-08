@@ -137,6 +137,7 @@ public class MemberController {
 	    memberUpdateRequest.setId(member.getId());
 	    memberUpdateRequest.setName(member.getName());
 	    memberUpdateRequest.setAge(member.getAge());
+	    memberUpdateRequest.setBirthday(member.getBirthday()); // 生年月日を設定
 	    memberUpdateRequest.setGender_id(member.getGenderId());
 	    memberUpdateRequest.setBlood_type_id(member.getBlood_type_id());
 	    model.addAttribute("memberUpdateRequest", memberUpdateRequest);

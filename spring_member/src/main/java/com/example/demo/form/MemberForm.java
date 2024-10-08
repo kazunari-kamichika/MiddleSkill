@@ -1,8 +1,12 @@
 package com.example.demo.form;
 
+import java.time.LocalDate;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -39,5 +43,19 @@ public class MemberForm {
 	* 血液型
 	*/
 	private Integer blood_type_id;
+	
+	// 生年月日のフィールドを追加
+    @NotNull(message = "生年月日を入力してください")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
+
+    // getter と setter
+//    public LocalDate getBirthday() {
+//        return birthday;
+//    }
+//
+//    public void setBirthday(LocalDate birthday) {
+//        this.birthday = birthday;
+//    }
 
 }
