@@ -20,6 +20,7 @@ public class MemberForm {
 	  * ID
 	  */
 	private Integer id;
+
 	/**
 	* 名前
 	*/
@@ -33,29 +34,20 @@ public class MemberForm {
 	@NotNull(message = "年齢を入力してください")
 	private Integer age;
 
-	/**
-	* 性別
-	*/
-	@NotNull
-    private Integer gender_id;
-
-	/**
-	* 血液型
-	*/
-	private Integer blood_type_id;
-	
 	// 生年月日のフィールドを追加
     @NotNull(message = "生年月日を入力してください")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
-    // getter と setter
-//    public LocalDate getBirthday() {
-//        return birthday;
-//    }
-//
-//    public void setBirthday(LocalDate birthday) {
-//        this.birthday = birthday;
-//    }
+	/**
+	* 性別
+	*/
+	@NotNull
+	private Integer gender_id;
+
+	/**
+	* 血液型
+	*/
+	private Integer blood_type_id;
 
 }

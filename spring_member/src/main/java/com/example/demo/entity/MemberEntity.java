@@ -43,13 +43,7 @@ public class MemberEntity {
     // 生年月日のフィールドを追加
     @Column(name = "birthday")
     private LocalDate birthday;
+    
+    
 
-    // getter と setter を追加
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
 }
