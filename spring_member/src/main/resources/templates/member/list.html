@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="common/head :: head_fragment(title = 'メンバーリスト', scripts = ~{::script}, links = ~{::link})"></head>
+
 <body>
- <div class="container">
-   <h1>メンバーリスト</h1>
-   <div class="float-end">
-     <a th:href="@{/member/add}" class="btn btn-primary">新規登録はこちら</a>
-   </div>
-   <table class="table table-striped">
-     <thead>
-       <tr>
-         <th>ID</th>
-         <th>名前</th>
-         <th>年齢</th>
-         <th>生年月日</th>
-         <th>性別</th>
-         <th>血液型</th>
-         <th></th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr th:each="member : ${memberlist}" class="align-middle">
-         <td th:text="${member.id}"></td>
-         <td th:text="${member.name}"></td>
-         <td th:text="${member.age}"></td>
-         <td th:text="${member.birthday}">生年月日</td>
-         <td th:text="${genderMap[member.genderId]}"></td>
-         <td th:text="${bloodTypeMap[member.blood_type_id]}"></td>
-         <td><a th:href="@{/member/{id}(id=${member.id})}" class="btn btn-secondary">詳細</a></td>
-       </tr>
-     </tbody>
-   </table>
- </div>
+	<div class="container">
+		<h1>メンバーリスト</h1>
+
+		<!-- 現在時刻の表示をここに追加 -->
+		<p>現在時刻: <span th:text="${currentTime}"></span></p>
+
+		<div class="float-end">
+			<a th:href="@{/member/add}" class="btn btn-primary">新規登録はこちら</a>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>年齢</th>
+					<th>生年月日</th>
+					<th>性別</th>
+					<th>血液型</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="member : ${memberlist}" class="align-middle">
+					<td th:text="${member.id}"></td>
+					<td th:text="${member.name}"></td>
+					<td th:text="${member.age}"></td>
+					<td th:text="${member.birthday}">生年月日</td>
+					<td th:text="${genderMap[member.genderId]}"></td>
+					<td th:text="${bloodTypeMap[member.blood_type_id]}"></td>
+					<td><a th:href="@{/member/{id}(id=${member.id})}" class="btn btn-secondary">詳細</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
+
 </html>

@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +26,10 @@ import com.example.demo.service.BloodTypeService;
 import com.example.demo.service.GenderService;
 import com.example.demo.service.MemberService;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
 * メンバー情報 Controller
 */
 @Controller
-@Slf4j // ログ記録のためのアノテーション
 public class MemberController {
 
 	/**
@@ -64,9 +63,15 @@ public class MemberController {
 		Map<Integer, String> genderMap = genderService.getGenders();
 		Map<Integer, String> bloodTypeMap = bloodTypeService.getBloodTypes();
 
+		// 現在日時を取得してフォーマット
+		Date nowDate = new Date();
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		String formatNowDate = sdf1.format(nowDate);
+
 		model.addAttribute("memberlist", memberlist);
 		model.addAttribute("genderMap", genderMap); // 性別Mapをモデルに追加
 		model.addAttribute("bloodTypeMap", bloodTypeMap); // 血液型Mapをモデルに追加
+		model.addAttribute("currentTime", formatNowDate);//現在時刻をモデルに追加
 
 		return "member/list";
 	}
@@ -105,20 +110,19 @@ public class MemberController {
 			model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型リストを再度追加
 			return "member/add";
 		}
-		
-		 // 生年月日が不正な場合は例外をスロー
-        LocalDate birthday = memberRequest.getBirthday(); // MemberFormからLocalDateを取得
-        Integer age = memberRequest.getAge();
 
-        if (!isBirthdayValid(birthday, age)) {
-            throw new InvalidBirthdayException("入力された年齢と生年月日が一致しません。");
-        }
+		// 生年月日が不正な場合は例外をスロー
+		LocalDate birthday = memberRequest.getBirthday(); // MemberFormからLocalDateを取得
+		Integer age = memberRequest.getAge();
+
+		if (!isBirthdayValid(birthday, age)) {
+			throw new InvalidBirthdayException("入力された年齢と生年月日が一致しません。");
+		}
 
 		// メンバー情報の登録
 		memberService.create(memberRequest);
 		return "redirect:/member/list";
 	}
-	
 
 	/**
 	 * メンバー情報詳細画面を表示
@@ -174,6 +178,7 @@ public class MemberController {
 			for (ObjectError error : result.getAllErrors()) {
 				errorList.add(error.getDefaultMessage());
 			}
+			model.addAttribute("memberUpdateRequest", new MemberForm());
 			model.addAttribute("validationError", errorList);
 			model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを再度追加
 			model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型リストを再度追加
@@ -197,27 +202,26 @@ public class MemberController {
 		memberService.delete(id);
 		return "redirect:/member/list";
 	}
-	
-	
-	 /**
-     * 生年月日と年齢の整合性をチェック
-     * @param birthday 生年月日
-     * @param age 年齢
-     * @return true: 正常, false: 異常
-     */
-    public boolean isBirthdayValid(LocalDate birthday, Integer age) {
-        if (birthday == null || age == null) {
-            return false; // 引数がnullの場合は不正
-        }
 
-        // 現在の日付を取得
-        LocalDate today = LocalDate.now();
-        
-        // 年齢を計算
-        int calculatedAge = Period.between(birthday, today).getYears();
+	/**
+	* 生年月日と年齢の整合性をチェック
+	* @param birthday 生年月日
+	* @param age 年齢
+	* @return true: 正常, false: 異常
+	*/
+	public boolean isBirthdayValid(LocalDate birthday, Integer age) {
+		if (birthday == null || age == null) {
+			return false; // 引数がnullの場合は不正
+		}
 
-        // 計算した年齢と入力された年齢が一致するかチェック
-        return calculatedAge == age;
-    }
+		// 現在の日付を取得
+		LocalDate today = LocalDate.now();
+
+		// 年齢を計算
+		int calculatedAge = Period.between(birthday, today).getYears();
+
+		// 計算した年齢と入力された年齢が一致するかチェック
+		return calculatedAge == age;
+	}
 
 }
