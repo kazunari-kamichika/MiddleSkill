@@ -22,42 +22,39 @@ public class MemberEntity {
 	/**
 	 * ID
 	 */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
 
-    /**
+	/**
 	 * 名前
 	 */
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    /**
+	/**
 	 * 年齢
 	 */
-    @Column(name = "age")
-    private Integer age;
+	@Column(name = "age")
+	private Integer age;
 
-    /**
+	/**
 	 * 性別
 	 */
 	@Column(name = "gender_id")
-	private Integer genderId; 
+	private Integer genderId;
 
 	/**
 	 * 血液型
 	 */
-    @Column(name = "blood_type_id")
-    private Integer blood_type_id;
-    
-    /**
+	@Column(name = "blood_type_id")
+	private Integer blood_type_id;
+
+	/**
 	 * 生年月日
 	 */
-    @Column(name = "birthday")
-    private LocalDate birthday;
-    
-    
-    
+	@Column(name = "birthday")
+	private LocalDate birthday;
 
 }

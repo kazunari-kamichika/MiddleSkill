@@ -9,10 +9,13 @@
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
 		<h1>メンバー新規登録</h1>
+		<p>多次元配列で表示しています⇒ <font color="#FF0000" size="5"><span th:text="${messagae}"></span></font>
+		</p>
+
 		<form th:action="@{/member/create}" th:object="${memberRequest}" th:method="post">
-			
-			 <!-- エラーメッセージの表示 -->
-        <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+			<!--例外処理で生年月日不一致の場合のエラーメッセージの表示 -->
+			<div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
 
 			<div class="form-group">
 				<label>名前：<span class="text-danger">※</span></label>
@@ -24,7 +27,7 @@
 			</div>
 			<div class="form-group">
 				<label for="birthday">生年月日：<span class="text-danger">※</span></label>
-				<input type="date" class="form-control" th:field="*{birthday}" >
+				<input type="date" class="form-control" th:field="*{birthday}">
 			</div>
 			<div class="form-group">
 				<label for="gender">性別：<span class="text-danger">※</span></label>

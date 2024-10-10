@@ -13,25 +13,15 @@ import com.example.demo.repository.GenderRepository;
 @Service
 public class GenderService {
 
-    // 性別情報を取得するメソッド
-//    public Map<Integer, String> getGenders() {
-//        Map<Integer, String> genderMap = new HashMap<>();
-//        genderMap.put(1, "男性");
-//        genderMap.put(2, "女性");
-//        genderMap.put(3, "その他");
-//        return genderMap;
-//    }
-	
-	
-	 @Autowired
-	    private GenderRepository GenderRepository;
-	
-	 public Map<Integer, String> getGenders() {
-	        List<GenderEntity> genders = GenderRepository.findAll();
-	        Map<Integer, String> genderMap = new HashMap<>();
-	        for (GenderEntity gender : genders) {
-	            genderMap.put(gender.getId(), gender.getName());
-	        }
-	        return genderMap;
-	    }
+	@Autowired
+	private GenderRepository GenderRepository;
+
+	public Map<Integer, String> getGenders() {
+		List<GenderEntity> genders = GenderRepository.findAll();
+		Map<Integer, String> genderMap = new HashMap<>();
+		for (GenderEntity gender : genders) {
+			genderMap.put(gender.getId(), gender.getName());
+		}
+		return genderMap;
+	}
 }

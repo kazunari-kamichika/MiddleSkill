@@ -35,9 +35,9 @@ public class MemberForm {
 	private Integer age;
 
 	// 生年月日のフィールドを追加
-    @NotNull(message = "生年月日を入力してください")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthday;
+	@NotNull(message = "生年月日を入力してください")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthday;
 
 	/**
 	* 性別

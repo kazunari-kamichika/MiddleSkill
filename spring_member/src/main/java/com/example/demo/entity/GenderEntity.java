@@ -15,16 +15,16 @@ import lombok.Data;
 @Table(name = "gender")
 public class GenderEntity {
 
-    /**
-     * ID
-     */
-    @Id
-    @Column(name = "id")
-    private Integer id;
+	/**
+	 * ID
+	 */
+	@Id
+	@Column(name = "id")
+	private Integer id;
 
-    /**
-     * 性別名
-     */
-    @Column(name = "name")
-    private String name;
+	/**
+	 * 性別名
+	 */
+	@Column(name = "name")
+	private String name;
 }

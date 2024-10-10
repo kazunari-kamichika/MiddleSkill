@@ -11,4 +11,3 @@ import com.example.demo.entity.BloodTypeEntity;
 @Repository
 public interface BloodTypeRepository extends JpaRepository<BloodTypeEntity, Integer> {
 }
-

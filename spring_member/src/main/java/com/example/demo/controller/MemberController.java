@@ -83,6 +83,23 @@ public class MemberController {
 	 */
 	@GetMapping("/member/add")
 	public String memberRegister(Model model) {
+
+		String[][] arr = {
+				{ "【", "新", "規", "登", "録", "入", "力", "フォ", "ー", "ム", "で", "す", "。" },
+				{ "※", "は", "必", "須", "項", "目", "で", "す", "。", "】" }
+		};
+
+		List<String> itemlist = new ArrayList<String>();
+		StringBuffer messagae = new StringBuffer();
+
+		for (String[] items : arr) {
+			for (String item : items) {
+				messagae.append(item);
+			}
+		}
+
+		model.addAttribute("messagae", messagae);
+
 		model.addAttribute("memberRequest", new MemberForm());
 		model.addAttribute("genderMap", genderService.getGenders()); // 性別リストを追加
 		model.addAttribute("bloodTypeMap", bloodTypeService.getBloodTypes()); // 血液型のデータを追加

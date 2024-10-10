@@ -12,29 +12,16 @@ import com.example.demo.repository.BloodTypeRepository;
 
 @Service
 public class BloodTypeService {
-	
-//    private final Map<Integer, String> bloodTypes = new HashMap<>();
 
-//    public BloodTypeService() {
-//        bloodTypes.put(1, "A");
-//        bloodTypes.put(2, "B");
-//        bloodTypes.put(3, "O");
-//        bloodTypes.put(4, "AB");
-//    }
-//
-//    public Map<Integer, String> getBloodTypes() {
-//        return bloodTypes;
-//    }
-    
-    @Autowired
-    BloodTypeRepository bloodTypeRepository;
+	@Autowired
+	BloodTypeRepository bloodTypeRepository;
 
-    public Map<Integer, String> getBloodTypes() {
-        List<BloodTypeEntity> bloodTypes = bloodTypeRepository.findAll();
-        Map<Integer, String> bloodTypeMap = new HashMap<>();
-        for (BloodTypeEntity bloodType : bloodTypes) {
-            bloodTypeMap.put(bloodType.getId(), bloodType.getName());
-        }
-        return bloodTypeMap;
-    }
+	public Map<Integer, String> getBloodTypes() {
+		List<BloodTypeEntity> bloodTypes = bloodTypeRepository.findAll();
+		Map<Integer, String> bloodTypeMap = new HashMap<>();
+		for (BloodTypeEntity bloodType : bloodTypes) {
+			bloodTypeMap.put(bloodType.getId(), bloodType.getName());
+		}
+		return bloodTypeMap;
+	}
 }
