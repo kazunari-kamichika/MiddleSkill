@@ -84,9 +84,10 @@ public class MemberController {
 	@GetMapping("/member/add")
 	public String memberRegister(Model model) {
 
-		String[][] arr = {
-				{ "【", "新", "規", "登", "録", "入", "力", "フォ", "ー", "ム", "で", "す", "。" },
-				{ "※", "は", "必", "須", "項", "目", "で", "す", "。", "】" }
+		String[][] arr = { { "【" },
+				{ "新", "規", "登", "録", "入", "力", "フォ", "ー", "ム", "で", "す", "。" },
+				{ "※", "は", "必", "須", "項", "目", "で", "す", "。" },
+				{ "】" }
 		};
 
 		List<String> itemlist = new ArrayList<String>();
@@ -150,7 +151,13 @@ public class MemberController {
 	@GetMapping("/member/{id}")
 	public String memberDetail(@PathVariable Integer id, Model model) {
 		MemberEntity member = memberService.findById(id);
+
+		Map<Integer, String> genderMap = genderService.getGenders();
+		Map<Integer, String> bloodTypeMap = bloodTypeService.getBloodTypes();
+
 		model.addAttribute("memberData", member);
+		model.addAttribute("genderMap", genderMap); // 性別Mapをモデルに追加
+		model.addAttribute("bloodTypeMap", bloodTypeMap); // 血液型Mapをモデルに追加
 		return "member/view";
 
 	}

@@ -28,13 +28,13 @@
 			<div class="row mx-md-n5">
 				<div class="col-2 pt-3 border bg-light">性別</div>
 				<div class="col pt-3 border">
-					<p th:text="*{genderId}"></p>
+					<p th:text="${genderMap[memberData.genderId]}"></p>
 				</div>
 			</div>
 			<div class="row mx-md-n5">
 				<div class="col-2 pt-3 border bg-light">血液型</div>
 				<div class="col pt-3 border">
-					<p th:text="*{blood_type_id}"></p>
+					<p th:text="${bloodTypeMap[memberData.blood_type_id]}"></p>
 				</div>
 			</div>
 
