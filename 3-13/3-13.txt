@@ -1,0 +1,93 @@
+
+1.「.java」ファイルをgrep検索し何ファイルあるか確認しなさい。
+
+□検索条件  「ファイル検索」
+検索対象       *.java
+フォルダー       C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main
+除外ファイル   *.msi;*.exe;*.obj;*.pdb;*.ilk;*.res;*.pch;*.iobj;*.ipdb
+除外フォルダー   .git;.svn;.vs
+    (サブフォルダーも検索)
+    (文字コードセットの自動判別)
+
+
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\main\java\com\example\springboot\Application.java  [UTF-8]
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\main\java\com\example\springboot\HelloController.java  [UTF-8]
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerITest.java  [UTF-8]
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerTest.java  [UTF-8]
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\initial\src\main\java\com\example\springboot\Application.java  [UTF-8]
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\initial\src\main\java\com\example\springboot\HelloController.java  [UTF-8]
+6 個が検索されました。
+
+
+
+
+2.「.java」ファイルで文字列「Exception」をgrep検索し何ファイルあるか確認しなさい。
+
+
+□検索条件  "Exception"
+検索対象       *.java
+フォルダー       C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main
+除外ファイル   *.msi;*.exe;*.obj;*.pdb;*.ilk;*.res;*.pch;*.iobj;*.ipdb
+除外フォルダー   .git;.svn;.vs
+    (サブフォルダーも検索)
+    (英大文字小文字を区別しない)
+    (文字コードセットの自動判別)
+    (一致した行を出力)
+
+
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerITest.java(19,39)  [UTF-8]:     public void getHello() throws NullException {
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerTest.java(24,36)  [UTF-8]: 	public void getHello() throws NullException {
+2 個が検索されました。
+
+
+
+3.「.java」ファイルで文字列「Exception」を「NullException」にgrep置換し何ファイルあるか確認しなさい。
+
+
+□検索条件  "Exception"
+置換後         "NullException"
+検索対象       *.java
+フォルダー       C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main
+除外ファイル   *.msi;*.exe;*.obj;*.pdb;*.ilk;*.res;*.pch;*.iobj;*.ipdb
+除外フォルダー   .git;.svn;.vs
+    (サブフォルダーも検索)
+    (英大文字小文字を区別しない)
+    (文字コードセットの自動判別)
+    (一致した行を出力)
+
+
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerITest.java(19,39)  [UTF-8]:     public void getHello() throws NullException {
+C:\Users\kazu-\OneDrive\デスクトップ\保存用\IT\MiddleSkill　保存めも\3-13\gs-spring-boot-main\complete\src\test\java\com\example\springboot\HelloControllerTest.java(24,36)  [UTF-8]: 	public void getHello() throws NullException {
+2 個を置換しました。
+
+
+
+4.Grep検索とは何ですか？
+
+サクラエディタのGrep検索は、複数ファイルの中から指定した文字列を含む行を検索して、結果をリストに出力する機能です。
+
+
+5.検索画面の「条件」には、何を入れますか？
+
+検索したい文字を入れます。
+
+
+6.検索画面の「ファイル」には、何を入れますか？
+
+検索対象のファイルを指定します。
+
+
+7.検索画面の「フォルダ」には、何を入れますか？
+
+検索対象のフォルダを指定します。
+
+
+8.検索画面の「サブフォルダ」にチェックを入れないとどうなりますか？
+
+ここにチェックが入ってないと指定フォルダの配下のフォルダまで検索してくれません。
+
+
+9.検索条件に正規表現の記述条件で検索しましたが上手く検索できませんでした。どのような要因が考えられるか上げなさい。
+
+正規表現のチェックボックスにチェックが入ってない。
+これにチェックが入ってないと検索条件に正規表現が使えないため。
