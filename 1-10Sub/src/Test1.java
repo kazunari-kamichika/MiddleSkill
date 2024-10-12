@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Test1 {
-
+	
 	/**
 	 * @param args
 	 */
@@ -12,7 +12,7 @@ public class Test1 {
 		//改行
 		System.out.println("問１");
 		//問題1:配列"numa"の要素を全要素を出力しなさい。※i++など利用しないfor文で記述すること
-		int[] numa = { 1, 2, 3, 4, 5 };
+		int[] numa = { 1, 2, 3, 4, 5, 6 };
 
 		for (int numadate : numa)
 
@@ -95,7 +95,7 @@ public class Test1 {
 
 		//問題8:Map"car"の「キー："toyota"」のバリューを出力してください。
 
-		System.out.println(car.get("toyota"));
+		System.out.println(car.get("subaru"));
 
 		//改行
 		System.out.println("問９");
@@ -116,3 +116,4 @@ public class Test1 {
 	}
 
 }
+
