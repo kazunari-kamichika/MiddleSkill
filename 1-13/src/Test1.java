@@ -27,33 +27,38 @@ public class Test1 {
 		List<String> strArray3 = new ArrayList<>();
 		List<String> strArray4 = new ArrayList<>();
 
-		// 1個目のfor文: strArray1で3文字目(k)以降のものをstrArray2に格納
-		for (int i = 2; i < strArray1.size(); i++) {
-			strArray2.add(strArray1.get(i));
-		}
+		
+		 // 1回目のfor文: strArray1の3文字目(k)以降のものをstrArray2に格納
+        for (int i = 2; i < strArray1.size(); i++) {
+            strArray2.add(strArray1.get(i));
+//            System.out.println(strArray2); //デバック確認用(strArray2にどのように格納されてるか)
 
-		// 2個目のfor文: strArray2でkとaとoの物だけをstrArray3に格納
-		for (String s : strArray2) {
-			if (s.equals("k") || s.equals("a") || s.equals("o")) {
-				strArray3.add(s);
-			}
-		}
+            // 2回目のfor文: strArray2からk, a, oだけをstrArray3に格納
+            for (int j = 0; j < strArray2.size(); j++) {
+                String s = strArray2.get(j);
+                if (s.equals("k") || s.equals("a") || s.equals("o")) { // A ll B AかBのどちらかがtrueの場合にtrue OR演算子（または）
+                    strArray3.add(s);
+//                    System.out.println(strArray3); //デバック確認用(strArray3にどのように格納されてるか)
 
-		// 3個目のfor文: strArray3で「kakao」となるようにstrArray4に格納
-		String target = "kakao";
-		int targetIndex = 0;
+                    // 3回目のfor文: strArray3を使って「kakao」を作成しstrArray4に格納
+                    if (strArray4.size() < 5) {
+                        for (int k = 0; k < strArray3.size(); k++) {
+                            if (strArray4.size() == 0 || strArray4.size() == 2) { //A == B	AとBが等しい時にtrue
+                                strArray4.add("k");
+                            } else if (strArray4.size() == 1 || strArray4.size() == 3) {
+                                strArray4.add("a");
+                            } else if (strArray4.size() == 4) {
+                                strArray4.add("o");
+                                break;  // kakaoが完成したらループを終了
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-		for (String s : strArray3) {
-			if (s.equals(String.valueOf(target.charAt(targetIndex)))) {
-				strArray4.add(s);
-				targetIndex++;
-			}
-			if (targetIndex == target.length()) {
-				break;
-			}
-		}
-
-		// strArray4を出力
-		System.out.println("{" + String.join("", strArray4) + "}");
-	}
+        // 結果を出力
+        System.out.println(strArray4); 
+    
+	}	
 }
