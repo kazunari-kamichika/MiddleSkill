@@ -5,36 +5,47 @@
     <meta charset="utf-8">
     <title>My Work</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 
 <body>
     <header id="header">
-        <h1 class="site-title">
+        <h2 class="site-title-header">
             <a>My Work</a>
-        </h1>
+        </h2>
 
         <nav class="menu">
             <h4>
-                <a href="index.html">About</a>
-                <a href="index.html">Works</a>
-                <a href="index.html">News</a>
-                <a href="index.html">Contact</a>
+                <a href="#About">About</a>
+                <a href="#Works">Works</a>
+                <a href="#News">News</a>
+                <a href="#Contact">Contact</a>
+                <img src="img/Instagram1.png" alt="Instagram">
             </h4>
         </nav>
+       
+       
     </header>
 
+    <div id="headerimg">
+        <img src="img/header1.jpg" alt="Main Visual">
+    </div>
+
     <main id="main">
-        <div id="headerimg">
-            <img src="img/header1.jpg">
-        </div>
 
         <section id="About">
             <h2 class="sec-title">About</h2>
+
+            <div class="Ashley">
+                <h5><p>Xxxx Ashley</p></h5>
+            </div>
+
             <div class="address">
                 <h5>
-                    <p>Xxxx Ashley</p>
                     <p>2th Floor xxxx Building x-x-x Nishiazabu,Minato-ku Tokyo 106-0031 Japan</p>
                     <p>tel: 000-0000-0000</p>
                     <p>url: www.xxxxxx.jp</p>
@@ -56,28 +67,38 @@
         <section id="Works">
             <h2 class="sec-title">Works</h2>
             <ul class="slick-area">
-                <li><img src="img/Works1.jpg"></li>
-                <li><img src="img/Works2.jpg"></li>
-                <li><img src="img/Works3.jpg"></li>
-                <li><img src="img/Works4.jpg"></li>
-                <li><img src="img/Works5.jpg"></li>
-                <li><img src="img/Works6.jpg"></li>
+                <li><img src="img/Works1.jpg" alt="Works 1"></li>
+                <li><img src="img/Works2.jpg" alt="Works 2"></li>
+                <li><img src="img/Works3.jpg" alt="Works 3"></li>
+                <li><img src="img/Works4.jpg" alt="Works 4"></li>
+                <li><img src="img/Works5.jpg" alt="Works 5"></li>
+                <li><img src="img/Works6.jpg" alt="Works 6"></li>
             </ul>
         </section>
 
         <section id="News">
             <h2 class="sec-title">News</h2>
             <ul class="newslist">
-                <li>2020.xx.xx</li>
-                <li>デザイン雑誌「ＸＸＸＸＸＸ Vol.11」に記載していただきました。</li>
-                <li>2020.xx.xx</li>
-                <li>ｘｘ月ｘｘ日から写真集「ＸＸＸＸＸＸ」の販売が開始します。</li>
-                <li>2019.xx.xx</li>
-                <li>【イベント開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト</li>
-                <li>2019.xx.xx</li>
-                <li>デザイン雑誌「ＸＸＸＸＸＸ Vol.10」に記載していただきました。</li>
-                <li>2019.xx.xx</li>
-                <li>【個展開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト</li>
+                <li>
+                    <span class="date">2020.xx.xx</span>
+                    <span class="content">デザイン雑誌「ＸＸＸＸＸＸ Vol.11」に記載していただきました。</span>
+                </li>
+                <li>
+                    <span class="date">2020.xx.xx</span>
+                    <span class="content">ｘｘ月ｘｘ日から写真集「ＸＸＸＸＸＸ」の販売が開始します。</span>
+                </li>
+                <li>
+                    <span class="date">2019.xx.xx</span>
+                    <span class="content">【イベント開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト</span>
+                </li>
+                <li>
+                    <span class="date">2019.xx.xx</span>
+                    <span class="content">デザイン雑誌「ＸＸＸＸＸＸ Vol.10」に記載していただきました。</span>
+                </li>
+                <li>
+                    <span class="date">2019.xx.xx</span>
+                    <span class="content">【個展開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト</span>
+                </li>
             </ul>
         </section>
 
@@ -85,14 +106,19 @@
             <h2 class="sec-title">Contact</h2>
             <div class="contact-form">
                 <form action="#">
-                    <dl>
+                    <dl class="nema-1">
                         <dt><label for="name">NAME</label></dt>
                         <dd><input type="text" id="name" name="your-name"></dd>
+                    </dl>
+                    <dl class="email-1">
                         <dt><label for="email">E-mail</label></dt>
                         <dd><input type="email" id="email" name="your-email"></dd>
+                    </dl>
+                    <dl class="message-1">
                         <dt><label for="message">MESSAGE</label></dt>
                         <dd><textarea id="message" name="your-message"></textarea></dd>
                     </dl>
+                    
                     <div class="button"><input type="submit" value="送信"></div>
                 </form>
             </div>
