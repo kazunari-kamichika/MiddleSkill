@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+
 
 </head>
 
@@ -24,15 +28,17 @@
                 <a href="#Works">Works</a>
                 <a href="#News">News</a>
                 <a href="#Contact">Contact</a>
-                <img src="img/Instagram1.png" alt="Instagram">
+                <a href="https://www.instagram.com/"><img src="img/Instagram1.png" alt="Instagram"></a>
             </h4>
         </nav>
-       
-       
+
+
     </header>
 
-    <div id="headerimg">
-        <img src="img/header1.jpg" alt="Main Visual">
+    <div class="slider">
+        <div><img src="img/header1.jpg"></div>
+        <div><img src="img/header2.jpg"></div>
+        <div><img src="img/header3.jpg"></div>
     </div>
 
     <main id="main">
@@ -41,7 +47,9 @@
             <h2 class="sec-title">About</h2>
 
             <div class="Ashley">
-                <h5><p>Xxxx Ashley</p></h5>
+                <h5>
+                    <p>Xxxx Ashley</p>
+                </h5>
             </div>
 
             <div class="address">
@@ -67,13 +75,22 @@
         <section id="Works">
             <h2 class="sec-title">Works</h2>
             <ul class="slick-area">
-                <li><img src="img/Works1.jpg" alt="Works 1"></li>
-                <li><img src="img/Works2.jpg" alt="Works 2"></li>
-                <li><img src="img/Works3.jpg" alt="Works 3"></li>
-                <li><img src="img/Works4.jpg" alt="Works 4"></li>
-                <li><img src="img/Works5.jpg" alt="Works 5"></li>
-                <li><img src="img/Works6.jpg" alt="Works 6"></li>
+                <li><img class="zoom" src="img/Works1.jpg" alt="Works 1"></li>
+                <li><img class="zoom" src="img/Works2.jpg" alt="Works 2"></li>
+                <li><img class="zoom" src="img/Works3.jpg" alt="Works 3"></li>
+                <li><img class="zoom" src="img/Works4.jpg" alt="Works 4"></li>
+                <li><img class="zoom" src="img/Works5.jpg" alt="Works 5"></li>
+                <li><img class="zoom" src="img/Works6.jpg" alt="Works 6"></li>
+
+
             </ul>
+            <!-- 拡大表示用の背景と画像 -->
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span class="close">&times;</span>
+                    <img id="popup-img" src="img/default.jpg" alt="Expanded Work"><!-- デフォルトで透明な画像を初期設定 -->
+                </div>
+            </div>
         </section>
 
         <section id="News">
@@ -118,7 +135,7 @@
                         <dt><label for="message">MESSAGE</label></dt>
                         <dd><textarea id="message" name="your-message"></textarea></dd>
                     </dl>
-                    
+
                     <div class="button"><input type="submit" value="送信"></div>
                 </form>
             </div>
@@ -126,10 +143,18 @@
     </main>
 
     <footer id="footer">
-        <p>&copy;  2020 My Work</p>
+        <p>&copy; 2020 My Work</p>
     </footer>
 
 
 </body>
+
+<!--------------------jQuery----------------------------------------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!------------------------------------------------------------------------------------->
+<!--------------------スライダー動かすやつ----------------------------------------------->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<!------------------------------------------------------------------------------------->
+<script src="js/Test.js"></script>
 
 </html>
