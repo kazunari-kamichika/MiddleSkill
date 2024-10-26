@@ -1,0 +1,158 @@
+﻿
+【課題】
+①
+TemplateInputException
+NumberFormatException
+ClassCastException
+NullPointerException
+IndexOutOfBoundsException
+ArithmeticException
+
+
+6つのエラーが邪魔して機能していないのでCRAD機能とバリデーション、各画面遷移が
+正常に行えるようにしてください
+
+
+
+②---------TemplateInputExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：TemplateInputExceptionの原因は、Thymeleaf テンプレートの構文エラーやファイルの参照エラーなど、テンプレートの解析中に発生するエラーです。
+
+▲原因箇所：view.htmlの5行目
+th:replace="common/head :: head_fragment(title = 'ユーザー情報詳細', scripts = ~::script, links = ~{::link})"></head>
+th:replace の式の中で構文エラーが発生している。
+
+●修正内容：
+下記の様に修正
+th:replace="common/head :: head_fragment(title = 'ユーザー情報詳細', scripts = ~{::script}, links = ~{::link})"></head>
+
+
+
+③---------NumberFormatExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：NumberFormatExceptionの原因は、データ型の範囲を超えた値を代入した場合発生するエラーです。
+
+▲原因箇所：UserControllerの77行～78行目
+
+	@GetMapping("/user/{id}")
+	public String displayView(@PathVariable Integer id, Model model) {
+		UserEntity user = userService.findById(id);
+	  ▲String name = new String();
+	  ▲int User =  Integer.parseInt(name);
+		model.addAttribute("userData", user);
+		return "user/view";
+
+	}
+
+String name = new String();でnameを空の文字列として初期化している。
+Integer.parseInt()は、文字列を プリミティブ型の int に変換して返すメソッド。
+そのため、int User =  Integer.parseInt(name);では、空の文字列をint型に変換しようとして例外が発生している。
+
+
+●修正内容：77行～78行目を削除
+この機能では、IDに紐ずくデータをDBから取得する。そのため、nameを初期化する必要もないですし、int型に変換する必要もない（名前は文字列）ので削除する。
+
+
+
+④---------ClassCastExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：オブジェクトを不適切なクラスにキャストしようとした場合に発生するエラーです。
+
+▲原因箇所：UserControllerの66行～73行目
+
+        userService.create(userRequest);
+	  ▲Object name = userRequest.getName();
+	  ▲Integer logName = (Integer) name;
+	    System.out.println("ログ出力：登録ユーザー名は"+logName);
+	
+		return "redirect:/user/list";
+	}
+
+ユーザーの名前を取得し、Object型のnameに格納。name変数をInteger型にキャストしようとしているが、nameは文字列のString型であるため、キャストに失敗して、ClassCastExceptionエラーとなる。
+
+●修正内容：
+
+		userService.create(userRequest);
+		String name = userRequest.getName();
+	    System.out.println("ログ出力：登録ユーザー名は"+name);
+	
+		return "redirect:/user/list";
+	}
+
+・Object型からString型に修正
+Object型はあらゆる型の変数を格納できる。しかし、nameは文字列を使う（基本的に他のデータ型を使うことはない）ので、String型のnameに格納するように修正。
+
+・Integer logName = (Integer) name;を削除
+名前は文字列でInteger型にキャストする必要がないので削除。
+
+
+
+⑤---------NullPointerExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：NullPointerExceptionの原因は、参照が null（何も指していない状態）であるオブジェクトにアクセスしようとしたときに発生します。
+
+▲原因箇所：
+
+        userUpdateRequest = null;
+		return String.format("redirect:/user/%d", userUpdateRequest.getId());
+	}
+
+【userUpdateRequest = null;】によりuserUpdateRequestがnullに再設定されているため、その後にuserUpdateRequest.getId() を呼び出そうとすると、userUpdateRequest が null のため NullPointerException が発生します。
+
+●修正内容：【userUpdateRequest = null;】を削除。
+ユーザー情報をuserUpdateRequestで更新しているのに、NULLに再設定することは更新機能ではないため。
+
+
+
+⑥---------IndexOutOfBoundsExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：IndexOutOfBoundsExceptionの原因は、リストや配列のインデックスが範囲外になると発生します。
+ 
+ 
+▲原因箇所：UserControllerの35行～37行目の下記コードです。
+ 
+ for (int i = 0; i < userlist.size() - 1; i++) {
+    userlists.add(userlist.get(-2));
+}
+
+ i < userlist.size() - 1では、要素数から1を引いた数までループするようになり、すべてのリストをループしないようにしている。
+ userlists.add(userlist.get(-2));の(-2)は変数が入るべき。
+
+●修正内容：
+
+for (int i = 0; i < userlist.size(); i++) {
+    userlists.add(userlist.get(i)); 
+}
+
+i < userlist.size()として、すべての要素数をループするように修正。
+userlists.add(userlist.get(i));として、正しいインデックスで要素（i）をgetするように修正。
+
+
+
+⑦---------ArithmeticExceptionの原因と原因箇所と修正内容を説明してください------------------------------------------
+
+■原因：ArithmeticExceptionの原因は、不正な数学的計算を行った場合に発生するエラー
+
+▲原因箇所：
+
+        BigDecimal id1 = new BigDecimal(10);
+	    BigDecimal id2 = new BigDecimal(3);
+	    BigDecimal id3 = id1.divide(id2);
+	    System.out.println("IDが整数かどうか判定する："+id3);
+
+【BigDecimal id3 = id1.divide(id2);】この行で 10/3 を計算しようとしていますが、BigDecimalのdivideメソッドは、小数が無限に続く場合に精度（小数点以下の桁数）を指定しないとエラーが発生します。
+
+●修正内容： 【BigDecimal id3 = id1.divide(id2, 2, RoundingMode.HALF_UP); 】に修正
+
+        BigDecimal id1 = new BigDecimal(10);
+		BigDecimal id2 = new BigDecimal(3);
+	    BigDecimal id3 = id1.divide(id2, 2, RoundingMode.HALF_UP); 
+	    System.out.println("IDが整数かどうか判定する："+id3);
+	    
+
+divide メソッドの第2引数に「小数点以下の桁数（スケール）」と「丸めモード」を追加。（HALF_UP「もっとも近い数字」に丸める丸めモードです(ただし、両隣りの数字が等距離の場合は切り上げます)。）
+これにより、小数点以下の桁数を2桁として、小数が無限に続く場合でも適切に丸められ、ArithmeticException を回避できる。
+
+
+
+
