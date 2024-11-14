@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美容院予約システム - プラン選択</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/calculateTotal.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>美容院予約システム</h1>
+    </header>
+
+    <main>
+        <h1>プラン選択</h1>
+        <form action="/reservation/time_selection" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>選択</th>
+                        <th>プラン名</th>
+                        <th>料金</th>
+                        <th>説明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="plan : ${plans}">
+                        <td>
+                            <input type="checkbox" name="selectedPlans" th:value="${plan.key}" class="plan-checkbox" th:data-price="${plan.value.price}">
+                        </td>
+                        <td th:text="${plan.value.name}">プラン名</td>
+                        <td th:text="${plan.value.price}">金額</td>
+                        <td th:text="${plan.value.description}">説明</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p>合計金額: <span id="totalPrice">0</span> 円</p>
+            </div>
+            <button type="submit" class="button">次へ（日時選択）</button>
+            <a href="/reservation/top" class="button">戻る</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 美容院予約システム</p>
+    </footer>
+</body>
+</html>
