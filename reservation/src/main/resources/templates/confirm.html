@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確認画面</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>確認画面</h1>
+    </header>
+    <main>
+        <h2>予約内容を確認してください</h2>
+        <p>プラン: <span th:text="${selectedPlan.name}">プラン名</span></p>
+        <p>料金: <span th:text="${selectedPlan.price}">料金</span> 円</p>
+        <p>日付: <span th:text="${reservationDate}">日付</span></p>
+        <p>時間: <span th:text="${reservationTime}">時間</span></p>
+        <p>名前: <span th:text="${userInfo.name}">名前</span></p>
+        <p>電話番号: <span th:text="${userInfo.phone}">電話番号</span></p>
+        <p>メールアドレス: <span th:text="${userInfo.email}">メールアドレス</span></p>
+        <button onclick="location.href='/reservation/top'">TOPへ戻る</button>
+    </main>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約一覧</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>予約一覧</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>プラン名</th>
+                    <th>料金</th>
+                    <th>日付</th>
+                    <th>時間</th>
+                    <th>ユーザー名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.plan.name}">プラン名</td>
+                    <td th:text="${reservation.plan.price}">料金</td>
+                    <td th:text="${reservation.date}">日付</td>
+                    <td th:text="${reservation.time}">時間</td>
+                    <td th:text="${reservation.user.name}">ユーザー名</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="location.href='/reservation/top'">トップに戻る</button>
+    </main>
+</body>
+</html>
