@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日時選択</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <script src="../static/js/datetimePicker.js" defer></script>
+	<script src="/js/datetimePicker.js"></script>
 </head>
+
 <body>
+	<header>
+		        <h1>日時選択</h1>
+		    </header>
+	
     <main>
-        <h1>日時選択</h1>
-        
+<!--        <h1>日時選択</h1>-->
+
+        <!-- プラン情報を表示 -->
+        <div class="plan-info">
+            <h3>選択したプラン</h3>
+            <p th:text="'プラン名: ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
+        </div>
+
         <!-- 日付の移動ボタン -->
         <div class="navigation-buttons">
             <button id="prevWeek" disabled>前の週</button>
@@ -21,9 +33,18 @@
         <table id="calendar" class="calendar-table">
             <!-- JavaScriptで内容を動的に生成 -->
         </table>
-        
+
         <!-- 確定ボタン -->
-        <button id="confirmButton" disabled>決定</button>
+        <form action="/select-user" method="POST" id="reservationForm">
+            <input type="hidden" name="planId" th:value="${selectedPlan.id}" />
+            <input type="hidden" name="selectedDate" id="selectedDate" />
+            <button type="submit" id="confirmButton" disabled>決定</button>
+            <!-- 戻るボタン -->
+            <a href="/reservation/plans" class="back-button">プラン選択へ戻る</a>
+        </form>
     </main>
+
+   
 </body>
+
 </html>

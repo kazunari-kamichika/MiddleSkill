@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>プラン選択</title>
-	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}"> <!-- 共通スタイルシートを読み込む -->
 </head>
 
 <body>
+
 	<header>
 		<h1>プラン選択</h1>
 	</header>
-	<main>
-		<form action="/reservation/datetime" method="post">
-			<table>
-				<thead>
-					<tr>
-						<th>選択</th>
-						<th>プラン名</th>
-						<th>料金</th>
-						<th>説明</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- entrySetを使ってMapをループ -->
-					<tr th:each="entry : ${plans}">
-						<td><input type="checkbox" name="selectedPlans" th:value="${entry.key}"></td>
-						<td th:text="${entry.value.name}">プラン名</td>
-						<td th:text="${entry.value.price}">料金</td>
-						<td th:text="${entry.value.description}">説明</td>
-					</tr>
-				</tbody>
-			</table>
-			<button type="submit">日時選択へ</button>
+	<div class="container">
+
+
+		<form action="/select-date" method="POST">
+			<div class="plans">
+				<!-- プランの情報を動的に表示 -->
+				<div th:each="plan : ${plans}">
+					<label class="plan-item">
+						<input type="radio" name="planId" th:value="${plan.id}" />
+						<span th:text="${plan.name} + '（¥' + ${plan.price} + '）'"></span>
+					</label>
+				</div>
+			</div>
+
+			<button type="submit" id="nextButton" disabled class="next-button">次へ</button>
+			<!-- 戻るボタン -->
+			<a href="/reservation/top" class="back-button">トップに戻る</a>
 		</form>
-		<button onclick="location.href='/reservation/top'">トップに戻る</button>
-	</main>
+	</div>
+
+	<script>
+		const nextButton = document.getElementById('nextButton');
+		const planRadios = document.getElementsByName('planId');
+
+		// ラジオボタンが変更された時に次ボタンを有効化
+		planRadios.forEach(radio => {
+			radio.addEventListener('change', () => {
+				nextButton.disabled = false;
+			});
+		});
+	</script>
 </body>
 
 </html>

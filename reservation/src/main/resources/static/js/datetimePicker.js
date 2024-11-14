@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmButton = document.getElementById("confirmButton");
     const prevWeekButton = document.getElementById("prevWeek");
     const nextWeekButton = document.getElementById("nextWeek");
+    const selectedDateInput = document.getElementById("selectedDate");
 
     let currentDate = new Date();
 
@@ -21,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 各日のヘッダーを作成
         for (let i = 0; i < daysToShow; i++) {
-            const day = new Date(date);
-            day.setDate(date.getDate() + i);
+            const day = new Date(date);  // 新しい日付オブジェクトを作成
+            day.setDate(date.getDate() + i);  // 日付を更新
 
             const dayHeader = document.createElement("th");
             dayHeader.textContent = day.toLocaleDateString("ja-JP", { month: "numeric", day: "numeric", weekday: "short" });
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // 時間スロットが選択されたら確定ボタンを有効化
                 timeSlot.addEventListener("change", () => {
                     confirmButton.disabled = false;
+                    selectedDateInput.value = timeSlot.value;  // 選択した日時をフォームにセット
                 });
             }
             calendarTable.appendChild(row);
@@ -81,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const today = new Date();
         today.setHours(0, 0, 0, 0); // 今日の日付
         prevWeekButton.disabled = currentDate <= today;
+        nextWeekButton.disabled = false; // 必要に応じて無効化する条件を追加できます
     }
 
     // 初期表示

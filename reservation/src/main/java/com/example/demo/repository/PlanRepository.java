@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.PlanEntity;
 
 @Repository
-public interface PlanRepository extends JpaRepository<PlanEntity, Integer> {
+public interface PlanRepository extends JpaRepository<PlanEntity, Long> {
 }
