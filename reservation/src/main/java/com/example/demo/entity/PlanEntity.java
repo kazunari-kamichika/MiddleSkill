@@ -1,9 +1,13 @@
 package com.example.demo.entity;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -19,9 +23,11 @@ public class PlanEntity {
     
     private String name;
     
-    private Double price;
+    private BigDecimal price;
     
     private String description;
 	
+    @OneToMany(mappedBy = "plan")
+    private List<ReservationEntity> reservations;  // プランに関連する予約リスト
 
 }

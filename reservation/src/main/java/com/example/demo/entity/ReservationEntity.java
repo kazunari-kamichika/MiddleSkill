@@ -37,5 +37,7 @@ public class ReservationEntity {
 
     @Column(name = "reservation_date", nullable = false)
     private LocalDateTime reservationDate; // 予約日時
+    
+    
 
 }

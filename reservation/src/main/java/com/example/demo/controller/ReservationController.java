@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.dto.ReservationDetailsDTO;
 import com.example.demo.entity.PlanEntity;
 import com.example.demo.entity.ReservationEntity;
 import com.example.demo.entity.UserEntity;
@@ -169,5 +170,21 @@ public class ReservationController {
 	    // 予約完了後にcomplete.htmlに遷移
 	    return "redirect:/complete";  // 完了ページへリダイレクト
 	}
+	
+	@GetMapping("/complete")
+	public String showCompletePage() {
+	    // 完了ページに遷移
+	    return "complete";  // complete.html を表示
+	}
+	
+	
+	@GetMapping("/reservation-list")
+	public String getReservationList(Model model) {
+	    List<ReservationDetailsDTO> reservations = reservationService.getAllReservations();
+	    model.addAttribute("reservations", reservations);
+	    return "list";  // "list" は list.html を指している
+	}
+	
 
+	
 }

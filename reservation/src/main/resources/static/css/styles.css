@@ -149,6 +149,57 @@ form button[type="submit"] {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* スクロール可能なテーブル */
+.reservation-list-container {
+    max-height: 400px; /* 表示エリアの高さを指定 */
+    overflow-y: auto;  /* 縦スクロールを有効にする */
+    border: 1px solid #ccc; /* 視覚的な区切り線 */
+    margin-bottom: 20px; /* 他要素との間隔 */
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse; /* セルの隙間をなくす */
+}
+
+thead th {
+    position: sticky;
+    top: 0; /* ヘッダーを固定 */
+    background-color: rgb(0, 128, 255);
+    border-bottom: 2px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f4f4f4; /* 偶数行の背景色 */
+}
+
+tbody tr:hover {
+    background-color: #e9ecef; /* ホバー時の背景色 */
+}
+
+/* ボタンスタイル */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 600px) {
     main {
