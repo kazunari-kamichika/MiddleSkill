@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +23,12 @@ public class ReservationController {
 
 	@Autowired
 	private PlanService planService;
-	
-	 @Autowired
-	    private ReservationService reservationService;
 
-	    @Autowired
-	    private UserService userService;
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private UserService userService;
 
 	/**
 	* トップ画面を表示するメソッド
@@ -92,8 +90,7 @@ public class ReservationController {
 
 		return "userinfo"; // ユーザー情報選択画面に遷移
 	}
-	
-	
+
 	/**
 	 * ユーザー情報を入力後、予約確認画面へ遷移
 	 * 
@@ -105,29 +102,28 @@ public class ReservationController {
 	 */
 	@PostMapping("/confirm")
 	public String confirmReservation(
-	        @RequestParam("userName") String userName,
-	        @RequestParam("userPhone") String userPhone,
-	        @RequestParam("userEmail") String userEmail,
-	        @RequestParam("selectedPlanId") Long selectedPlanId,
-	        @RequestParam("selectedPlanName") String selectedPlanName,
-	        @RequestParam("selectedPlanPrice") String selectedPlanPrice,
-	        @RequestParam("selectedDate") String selectedDate,
-	        Model model) {
+			@RequestParam("userName") String userName,
+			@RequestParam("userPhone") String userPhone,
+			@RequestParam("userEmail") String userEmail,
+			@RequestParam("selectedPlanId") Long selectedPlanId,
+			@RequestParam("selectedPlanName") String selectedPlanName,
+			@RequestParam("selectedPlanPrice") String selectedPlanPrice,
+			@RequestParam("selectedDate") String selectedDate,
+			Model model) {
 
-	    // 予約情報をモデルに追加
-	    model.addAttribute("userName", userName);
-	    model.addAttribute("userPhone", userPhone);
-	    model.addAttribute("userEmail", userEmail);
-	    model.addAttribute("selectedPlanId", selectedPlanId);
-	    model.addAttribute("selectedPlanName", selectedPlanName);
-	    model.addAttribute("selectedPlanPrice", selectedPlanPrice);
-	    model.addAttribute("selectedDate", selectedDate);
+		// 予約情報をモデルに追加
+		model.addAttribute("userName", userName);
+		model.addAttribute("userPhone", userPhone);
+		model.addAttribute("userEmail", userEmail);
+		model.addAttribute("selectedPlanId", selectedPlanId);
+		model.addAttribute("selectedPlanName", selectedPlanName);
+		model.addAttribute("selectedPlanPrice", selectedPlanPrice);
+		model.addAttribute("selectedDate", selectedDate);
 
-	    // 確認画面へ遷移
-	    return "confirm";
+		// 確認画面へ遷移
+		return "confirm";
 	}
-	
-	
+
 	/**
 	 * 予約を確定し、DBに保存するメソッド
 	 * 
@@ -140,51 +136,51 @@ public class ReservationController {
 	 */
 	@PostMapping("/finalize")
 	public String finalizeReservation(
-	        @RequestParam("userName") String userName,
-	        @RequestParam("userPhone") String userPhone,
-	        @RequestParam("userEmail") String userEmail,
-	        @RequestParam("selectedPlanId") Long selectedPlanId,
-	        @RequestParam("selectedDate") String selectedDate) {
+			@RequestParam("userName") String userName,
+			@RequestParam("userPhone") String userPhone,
+			@RequestParam("userEmail") String userEmail,
+			@RequestParam("selectedPlanId") Long selectedPlanId,
+			@RequestParam("selectedDate") String selectedDate) {
 
-	    // ユーザー情報を保存
-	    UserEntity user = new UserEntity();
-	    user.setName(userName);
-	    user.setPhone(userPhone);
-	    user.setEmail(userEmail);
-	    UserEntity savedUser = userService.saveUser(user);
+		// ユーザー情報を保存
+		UserEntity user = new UserEntity();
+		user.setName(userName);
+		user.setPhone(userPhone);
+		user.setEmail(userEmail);
+		UserEntity savedUser = userService.saveUser(user);
 
-	    // プラン情報を取得
-	    PlanEntity plan = planService.getPlanById(selectedPlanId); // PlanServiceでプランを取得
+		// プラン情報を取得
+		PlanEntity plan = planService.getPlanById(selectedPlanId); // PlanServiceでプランを取得
 
-	    // 予約日時を変換
-	    ZonedDateTime reservationDate = ZonedDateTime.parse(selectedDate, DateTimeFormatter.ISO_ZONED_DATE_TIME);
-	    LocalDateTime localDateTime = reservationDate.toLocalDateTime();
+		//	    // 予約日時を変換
+		//	    ZonedDateTime reservationDate = ZonedDateTime.parse(selectedDate, DateTimeFormatter.ISO_ZONED_DATE_TIME);
+		//	    LocalDateTime localDateTime = reservationDate.toLocalDateTime();
+		
+		// 予約日時を変換
+		LocalDateTime localDateTime = LocalDateTime.parse(selectedDate + "T00:00:00"); // 時刻を指定
 
-	    // 予約情報を保存
-	    ReservationEntity reservation = new ReservationEntity();
-	    reservation.setUser(savedUser);
-	    reservation.setPlan(plan); // ここでプランを関連付け
-	    reservation.setReservationDate(localDateTime);
-	    reservationService.saveReservation(reservation);
+		// 予約情報を保存
+		ReservationEntity reservation = new ReservationEntity();
+		reservation.setUser(savedUser);
+		reservation.setPlan(plan); // ここでプランを関連付け
+		reservation.setReservationDate(localDateTime);
+		reservationService.saveReservation(reservation);
 
-	    // 予約完了後にcomplete.htmlに遷移
-	    return "redirect:/complete";  // 完了ページへリダイレクト
+		// 予約完了後にcomplete.htmlに遷移
+		return "redirect:/complete"; // 完了ページへリダイレクト
 	}
-	
+
 	@GetMapping("/complete")
 	public String showCompletePage() {
-	    // 完了ページに遷移
-	    return "complete";  // complete.html を表示
+		// 完了ページに遷移
+		return "complete"; // complete.html を表示
 	}
-	
-	
+
 	@GetMapping("/reservation-list")
 	public String getReservationList(Model model) {
-	    List<ReservationDetailsDTO> reservations = reservationService.getAllReservations();
-	    model.addAttribute("reservations", reservations);
-	    return "list";  // "list" は list.html を指している
+		List<ReservationDetailsDTO> reservations = reservationService.getAllReservations();
+		model.addAttribute("reservations", reservations);
+		return "list"; // "list" は list.html を指している
 	}
-	
 
-	
 }
