@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME) // 実行時まで保持
 public @interface DATE {
     // フォーマットの属性（必要に応じてカスタマイズ）
-    String format() default "yyyy-MM-dd HH:mm:ss";
+    String format() default "yyyy-MM-dd";
 }

@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentDate = new Date();
 
+    // 日付をyyyy-MM-dd形式でフォーマット
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     // カレンダーを表形式で表示
     function renderCalendar(date) {
         calendarTable.innerHTML = ""; // カレンダー表をクリア
@@ -26,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             day.setDate(date.getDate() + i);  // 日付を更新
 
             const dayHeader = document.createElement("th");
-            dayHeader.textContent = day.toLocaleDateString("ja-JP", { month: "numeric", day: "numeric", weekday: "short" });
+            dayHeader.textContent = formatDate(day);  // 日付をyyyy-MM-dd形式に
             headerRow.appendChild(dayHeader);
         }
         calendarTable.appendChild(headerRow);
@@ -57,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // 時間スロットが選択されたら確定ボタンを有効化
                 timeSlot.addEventListener("change", () => {
                     confirmButton.disabled = false;
-                    selectedDateInput.value = timeSlot.value;  // 選択した日時をフォームにセット
+                    selectedDateInput.value = formatDate(day);  // 選択した日時をyyyy-MM-dd形式でフォームにセット
                 });
             }
             calendarTable.appendChild(row);

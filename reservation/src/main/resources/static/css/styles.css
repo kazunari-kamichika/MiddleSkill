@@ -23,7 +23,7 @@ header {
 
 /* メインコンテンツのスタイル */
 main {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -151,7 +151,7 @@ form button[type="submit"] {
 
 /* スクロール可能なテーブル */
 .reservation-list-container {
-    max-height: 400px; /* 表示エリアの高さを指定 */
+    max-height: 800px; /* 表示エリアの高さを指定 */
     overflow-y: auto;  /* 縦スクロールを有効にする */
     border: 1px solid #ccc; /* 視覚的な区切り線 */
     margin-bottom: 20px; /* 他要素との間隔 */
