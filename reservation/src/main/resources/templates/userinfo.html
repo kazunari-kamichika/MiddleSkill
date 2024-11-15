@@ -18,7 +18,7 @@
 		<p th:text="'選択されたプラン: ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
 		<p th:text="'選択された日時: ' + ${selectedDate}"></p>
 
-		<form action="/confirm-reservation" method="POST">
+		<form action="/confirm" method="POST">
 			<!-- ユーザー情報を入力するフォーム -->
 			<input type="text" name="userName" placeholder="お名前" required />
 			<input type="tel" name="userPhone" placeholder="電話番号" pattern="^\d{2,4}-\d{2,4}-\d{4}$" required />
@@ -26,9 +26,11 @@
 
 			<!-- hidden フィールドでプラン情報と日時情報を送信 -->
 			<input type="hidden" name="selectedPlanId" th:value="${selectedPlan.id}" />
-			<input type="hidden" name="selectedDate" th:value="${selectedDate}" />
+			    <input type="hidden" name="selectedPlanName" th:value="${selectedPlan.name}" />
+			    <input type="hidden" name="selectedPlanPrice" th:value="${selectedPlan.price}" />
+			    <input type="hidden" name="selectedDate" th:value="${selectedDate}" />
 
-			<button type="submit">予約を確定</button>
+			<button type="submit">予約確認へ</button>
 		</form>
 
 		<!-- 戻るボタン -->
@@ -36,4 +38,5 @@
 
 	</main>
 
+</body>
 </html>
