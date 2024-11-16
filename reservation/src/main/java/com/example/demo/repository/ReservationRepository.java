@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.ReservationEntity;
 
+
 @Repository
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
     // 必要に応じてカスタムクエリメソッドを追加
@@ -17,3 +18,24 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 	 @Query("SELECT r FROM ReservationEntity r JOIN FETCH r.user u JOIN FETCH r.plan p")
 	    List<ReservationEntity> findAllReservationsWithUserAndPlan();
 }
+
+
+
+/*
+SELECT 
+r.id AS reservation_id,
+r.reservation_date,
+u.id AS user_id,
+u.name AS user_name,
+u.phone AS user_phone,
+u.email AS user_email,
+p.id AS plan_id,
+p.name AS plan_name,
+p.price AS plan_price
+FROM 
+reservations r
+JOIN 
+users u ON r.user_id = u.id
+JOIN 
+plans p ON r.plan_id = p.id;
+*/

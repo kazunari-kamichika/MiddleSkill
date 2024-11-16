@@ -18,9 +18,9 @@
 <!--        <h1>日時選択</h1>-->
 
         <!-- プラン情報を表示 -->
-        <div class="plan-info">
-            <h3>選択したプラン</h3>
-            <p th:text="'プラン名: ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
+        <div class="list">
+            <h3>【選択したプラン】</h3>
+            <p th:text="'プラン： ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
         </div>
 
         <!-- 日付の移動ボタン -->

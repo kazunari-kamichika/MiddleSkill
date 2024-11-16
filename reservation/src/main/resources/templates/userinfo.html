@@ -15,8 +15,9 @@
 	</header>
 
 	<main>
-		<p th:text="'選択されたプラン: ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
-		<p th:text="'選択された日時: ' + ${selectedDate}"></p>
+        <h3>【選択したプラン・予約時間】</h3>
+		<p th:text="'プラン： ' + ${selectedPlan.name} + '（¥' + ${selectedPlan.price} + '）'"></p>
+		<p th:text="'予約日時： ' + ${selectedDate}"></p>
 
 		<form action="/confirm" method="POST">
 			<!-- ユーザー情報を入力するフォーム -->

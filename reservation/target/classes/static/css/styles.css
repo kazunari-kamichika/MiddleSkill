@@ -178,7 +178,7 @@ tbody td {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #f4f4f4; /* 偶数行の背景色 */
+    background-color: #ebedf8; /* 偶数行の背景色 */
 }
 
 tbody tr:hover {
@@ -198,6 +198,13 @@ tbody tr:hover {
 
 .back-button:hover {
     background-color: #0056b3;
+}
+
+/* パラメータで渡した情報のフォントのスタイル */
+p {
+    font-weight: bold;
+    height: 35px;
+
 }
 
 /* レスポンシブデザイン */

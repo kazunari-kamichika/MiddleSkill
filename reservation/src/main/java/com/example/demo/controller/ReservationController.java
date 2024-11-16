@@ -175,7 +175,12 @@ public class ReservationController {
 		// 完了ページに遷移
 		return "complete"; // complete.html を表示
 	}
-
+	/**
+	 * トップページから、予約一覧画面へ遷移するメソッド
+	 * 
+	 * @param Model
+	 * @return 予約一覧画面へ
+	 */
 	@GetMapping("/reservation-list")
 	public String getReservationList(Model model) {
 		List<ReservationDetailsDTO> reservations = reservationService.getAllReservations();

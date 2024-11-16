@@ -13,11 +13,12 @@
     </header>
 
     <main>
-        <p th:text="'プラン: ' + ${selectedPlanName} + '（¥' + ${selectedPlanPrice} + '）'"></p>
-        <p th:text="'日時: ' + ${selectedDate}"></p>
-        <p th:text="'お名前: ' + ${userName}"></p>
-        <p th:text="'電話番号: ' + ${userPhone}"></p>
-        <p th:text="'メールアドレス: ' + ${userEmail}"></p>
+        <h3>【選択したプラン・予約時間・ユーザー情報】</h3>
+        <p th:text="'プラン： ' + ${selectedPlanName} + '（¥' + ${selectedPlanPrice} + '）'"></p>
+        <p th:text="'予約日時： ' + ${selectedDate}"></p>
+        <p th:text="'お名前： ' + ${userName}"></p>
+        <p th:text="'電話番号： ' + ${userPhone}"></p>
+        <p th:text="'メールアドレス： ' + ${userEmail}"></p>
 
         <form action="/finalize" method="POST">
             <!-- hidden フィールドですべての情報を送信 -->
