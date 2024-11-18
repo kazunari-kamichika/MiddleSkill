@@ -152,9 +152,6 @@ public class ReservationController {
 		// プラン情報を取得
 		PlanEntity plan = planService.getPlanById(selectedPlanId); // PlanServiceでプランを取得
 
-		//	    // 予約日時を変換
-		//	    ZonedDateTime reservationDate = ZonedDateTime.parse(selectedDate, DateTimeFormatter.ISO_ZONED_DATE_TIME);
-		//	    LocalDateTime localDateTime = reservationDate.toLocalDateTime();
 		
 		// 予約日時を変換
 		LocalDateTime localDateTime = LocalDateTime.parse(selectedDate + "T00:00:00"); // 時刻を指定
@@ -175,6 +172,7 @@ public class ReservationController {
 		// 完了ページに遷移
 		return "complete"; // complete.html を表示
 	}
+	
 	/**
 	 * トップページから、予約一覧画面へ遷移するメソッド
 	 * 
@@ -187,5 +185,8 @@ public class ReservationController {
 		model.addAttribute("reservations", reservations);
 		return "list"; // "list" は list.html を指している
 	}
+	
+
+	
 
 }

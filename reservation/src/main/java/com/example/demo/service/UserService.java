@@ -15,5 +15,6 @@ public class UserService {
 	    public UserEntity saveUser(UserEntity user) {
 	        return userRepository.save(user);
 	    }
+	    
 
 }

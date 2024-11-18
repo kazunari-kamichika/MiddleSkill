@@ -17,6 +17,9 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 	// Reservations with User and Plan details
 	 @Query("SELECT r FROM ReservationEntity r JOIN FETCH r.user u JOIN FETCH r.plan p")
 	    List<ReservationEntity> findAllReservationsWithUserAndPlan();
+	 
+	 
+
 }
 
 

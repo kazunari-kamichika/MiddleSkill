@@ -23,6 +23,7 @@
 						<th>プラン</th>
 						<th>料金</th>
 						<th>予約日時</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,7 +34,12 @@
 						<td th:text="${reservation.planName}"></td>
 						<td th:text="'¥' + ${reservation.planPrice}"></td>
 						<td th:text="${reservation.formattedReservationDate}"></td>
-
+						<td>
+							<form>
+								<input type="hidden" />
+								<button type="submit" class="delete-button">削除</button>
+							</form>
+						</td>
 					</tr>
 				</tbody>
 			</table>

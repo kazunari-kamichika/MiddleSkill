@@ -22,7 +22,7 @@
 				<div th:each="plan : ${plans}">
 					<label class="plan-item">
 						<input type="radio" name="planId" th:value="${plan.id}" />
-						<span th:text="${plan.name} + '（¥' + ${plan.price} + '）'"></span>
+						<span th:text="${plan.name} + '（¥' + ${plan.price} + '）'+ '・・・・' + ${plan.description} + ''"></span>
 					</label>
 				</div>
 			</div>
